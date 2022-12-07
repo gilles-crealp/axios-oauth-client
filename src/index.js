@@ -13,7 +13,7 @@ export default function oauth (axios, { url, ...credentials }) {
   }).then(res => res.data)
 }
 
-oauth.authorizationCode = function (axios, url, client_id, client_secret, redirect_uri, code = null, scope = null) {
+oauth.authorizationCode = function (axios, url, client_id, client_secret, redirect_uri, code, scope) {
   return oauth(axios, {
     url,
     grant_type: 'authorization_code',
@@ -25,7 +25,7 @@ oauth.authorizationCode = function (axios, url, client_id, client_secret, redire
   })
 }
 
-oauth.ownerCredentials = function (axios, url, client_id, client_secret, username = null, password = null, scope = null) {
+oauth.ownerCredentials = function (axios, url, client_id, client_secret, username, password, scope) {
   return oauth(axios, {
     url,
     grant_type: 'password',
@@ -37,7 +37,7 @@ oauth.ownerCredentials = function (axios, url, client_id, client_secret, usernam
   })
 }
 
-oauth.clientCredentials = function (axios, url, client_id, client_secret, scope = null) {
+oauth.clientCredentials = function (axios, url, client_id, client_secret, scope) {
   return oauth(axios, {
     url,
     grant_type: 'client_credentials',
@@ -47,7 +47,7 @@ oauth.clientCredentials = function (axios, url, client_id, client_secret, scope 
   })
 }
 
-oauth.refreshToken = function (axios, url, client_id, client_secret, refresh_token = null, scope = null) {
+oauth.refreshToken = function (axios, url, client_id, client_secret, refresh_token, scope) {
   return oauth(axios, {
     url,
     grant_type: 'refresh_token',
